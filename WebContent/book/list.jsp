@@ -34,6 +34,7 @@
 			<tr>
 				<th>#</th>
 				<th>Nome</th>
+				<th>Autor</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -45,6 +46,7 @@
 					String row = "<tr>";
 					row += "<td>" + books.get(i).getId() + "</td>";
 					row += "<td>" + books.get(i).getName() + "</td>";
+					row += "<td>" + books.get(i).getAuthor().getName() + "</td>";
 					row += "<td><a href=\"book?delete=true&&id="+ books.get(i).getId() +"\">Deletar</a></td>";
 					row += "</tr>";
 					out.println(row);

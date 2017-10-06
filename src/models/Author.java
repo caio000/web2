@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,8 +34,15 @@ public class Author implements Serializable {
 	@Column(nullable=true)
 	private int age;
 
-	@OneToMany(mappedBy="author", targetEntity=Book.class, fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="author", targetEntity=Book.class, fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
 	private List<Book> books = new ArrayList<>();
+	
+	@OneToMany
+	@JoinTable(
+			joinColumns= {@JoinColumn(name="idAuthor")},
+			inverseJoinColumns= {@JoinColumn(name="idPhone")}
+	)
+	private List<Phone> phones = new ArrayList<>();
 	
 	private static final long serialVersionUID = 1L;
 
