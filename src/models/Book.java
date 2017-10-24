@@ -1,12 +1,15 @@
 package models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -32,6 +35,13 @@ public class Book implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="idAuthor")
 	private Author author;
+	
+	@ManyToMany
+	@JoinTable(
+			joinColumns= {@JoinColumn(name="idBook")},
+			inverseJoinColumns = {@JoinColumn(name="idCategory")}
+	)
+	private List<Category> categories;
 
 	
 	//===========================================================================
@@ -72,7 +82,15 @@ public class Book implements Serializable {
 
 	public void setAuthor(Author author) {
 		this.author = author;
-	}	
+	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
 	
    
 }
