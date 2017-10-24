@@ -6,6 +6,8 @@
 		<class>models.Book</class>
 		<class>models.Author</class>
 		<class>models.Phone</class>
+		<class>models.Address</class>
+		<class>models.User</class>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />

@@ -81,7 +81,6 @@ public class BookController extends HttpServlet {
 	 * @throws IOException 
 	 */
 	protected void bookDelete (long id, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// TODO buscar o livro pelo id.
 		Book book = this.dao.getById(id);
 		this.dao.delete(book);
 		response.sendRedirect("book");
